@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Shield, Terminal, Github, Star, Heart, Twitter } from "lucide-react";
+import { Search, Github, Star, Heart, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -109,28 +109,14 @@ export default function Home() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-          JSON, JWT, Base64, cron, regex, hashing — all in one place.
+          JSON, JWT, Base64, UUID and more, all in one place.
           <br />
           No server. No tracking. Your data never leaves the browser.
         </p>
 
-        {/* Trust badges */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground sm:gap-6">
-          <span className="flex items-center gap-1.5">
-            <Shield className="h-3.5 w-3.5" /> Zero data collection
-          </span>
-          <span className="hidden text-border sm:block">·</span>
-          <span className="flex items-center gap-1.5">
-            <Terminal className="h-3.5 w-3.5" /> Works offline
-          </span>
-          <span className="hidden text-border sm:block">·</span>
-          <span className="flex items-center gap-1.5">
-            <Github className="h-3.5 w-3.5" /> MIT License
-          </span>
-        </div>
       </section>
 
-      {/* Category filter */}
+      {/* Category filter — hidden until more tools are ready
       <div
         className={`relative z-10 flex flex-wrap items-center justify-center gap-1.5 px-4 pt-7 pb-2 sm:px-6 transition-opacity duration-500 delay-300 ${
           mounted ? "opacity-100" : "opacity-0"
@@ -154,6 +140,7 @@ export default function Home() {
           );
         })}
       </div>
+      */}
 
       {/* Tool grid */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 pb-20">
@@ -172,7 +159,7 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: `${350 + i * 30}ms` }}
               >
-                <Card className="h-full p-5 transition-all duration-200 hover:border-orange-500/20 hover:shadow-[0_8px_32px_hsl(24_95%_53%/0.06)] hover:-translate-y-0.5 dark:hover:shadow-[0_8px_32px_hsl(24_95%_53%/0.08)]">
+                <Card className="h-full p-5 flex flex-col transition-all duration-200 hover:border-orange-500/20 hover:shadow-[0_8px_32px_hsl(24_95%_53%/0.06)] hover:-translate-y-0.5 dark:hover:shadow-[0_8px_32px_hsl(24_95%_53%/0.08)]">
                   <div className="flex items-start justify-between mb-2.5">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg border bg-muted/50">
                       <Icon className="h-4 w-4 text-orange-500" />
@@ -200,7 +187,7 @@ export default function Home() {
                   <h3 className="font-mono text-sm font-semibold tracking-tight">
                     {tool.name}
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground flex-1">
                     {tool.desc}
                   </p>
 
