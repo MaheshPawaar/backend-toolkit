@@ -40,7 +40,7 @@ export function CommandMenu({ open, onOpenChange }) {
           <CommandEmpty>No tools found.</CommandEmpty>
           {CATEGORIES.filter((c) => c.id !== "all").map((category) => {
             const categoryTools = TOOLS.filter(
-              (t) => t.category === category.id
+              (t) => t.category === category.id && t.ready
             );
             if (categoryTools.length === 0) return null;
             return (

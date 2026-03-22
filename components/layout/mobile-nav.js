@@ -39,7 +39,7 @@ export function MobileNav() {
         <div className="overflow-y-auto py-2">
           {CATEGORIES.filter((c) => c.id !== "all").map((category) => {
             const categoryTools = TOOLS.filter(
-              (t) => t.category === category.id
+              (t) => t.category === category.id && t.ready
             );
             if (categoryTools.length === 0) return null;
             return (

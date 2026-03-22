@@ -56,6 +56,7 @@ export default function JwtDecoderPage() {
   const [payload, setPayload] = useState(null);
   const [signature, setSignature] = useState("");
   const [error, setError] = useState("");
+  const [wasClean, setWasClean] = useState(true);
 
   const decode = useCallback((token) => {
     setInput(token);
@@ -65,10 +66,13 @@ export default function JwtDecoderPage() {
       setPayload(null);
       setSignature("");
       setError("");
+      setWasClean(true);
       return;
     }
 
-    const parts = token.trim().split(".");
+    const stripped = token.replace(/\s+/g, "");
+    setWasClean(stripped === token.trim());
+    const parts = stripped.split(".");
     if (parts.length !== 3) {
       setError("Invalid JWT: expected 3 parts (header.payload.signature)");
       setHeader(null);
@@ -186,6 +190,12 @@ export default function JwtDecoderPage() {
         />
       </Card>
 
+      {!wasClean && !error && (
+        <div className="mb-4 rounded-md border border-orange-500/20 bg-orange-500/5 p-3">
+          <p className="text-xs text-orange-500">Whitespace was removed from the token before decoding.</p>
+        </div>
+      )}
+
       {error && (
         <div className="mb-4 rounded-md border border-destructive/20 bg-destructive/5 p-3">
           <p className="font-mono text-xs text-destructive">{error}</p>
@@ -268,6 +278,10 @@ export default function JwtDecoderPage() {
           </Card>
         </div>
       )}
+
+      <p className="mt-4 text-xs text-muted-foreground/60">
+        Use when debugging auth flows, checking token expiry, or inspecting claims without a server.
+      </p>
     </ToolLayout>
   );
 }

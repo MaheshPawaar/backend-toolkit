@@ -39,6 +39,7 @@ export const TOOLS = [
     icon: Braces,
     hot: true,
     phase: 1,
+    ready: true,
   },
   {
     name: "JWT Decoder",
@@ -48,6 +49,7 @@ export const TOOLS = [
     icon: KeyRound,
     hot: true,
     phase: 1,
+    ready: true,
   },
   {
     name: "Base64 Codec",
@@ -56,6 +58,7 @@ export const TOOLS = [
     route: "/tools/base64",
     icon: Binary,
     phase: 1,
+    ready: true,
   },
   {
     name: "URL Encoder",
@@ -72,6 +75,7 @@ export const TOOLS = [
     route: "/tools/uuid-generator",
     icon: Fingerprint,
     phase: 1,
+    ready: true,
   },
   {
     name: "Timestamp Converter",

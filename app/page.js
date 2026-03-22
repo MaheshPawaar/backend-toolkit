@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Shield, Terminal, Github } from "lucide-react";
+import { Search, Shield, Terminal, Github, Star, Heart, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,10 +19,11 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  const readyTools = TOOLS.filter((t) => t.ready);
   const filtered =
     activeCategory === "all"
-      ? TOOLS
-      : TOOLS.filter((t) => t.category === activeCategory);
+      ? readyTools
+      : readyTools.filter((t) => t.category === activeCategory);
 
   return (
     <div className="relative min-h-screen bg-background overflow-hidden">
@@ -60,7 +61,7 @@ export default function Home() {
             >
               <Search className="h-3.5 w-3.5" />
               <span>Search tools</span>
-              <kbd className="pointer-events-none ml-2 rounded border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <kbd className="pointer-events-none ml-3 rounded border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
                 ⌘K
               </kbd>
             </Button>
@@ -96,7 +97,7 @@ export default function Home() {
         {/* Live badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-3.5 py-1 text-xs font-medium text-orange-500 mb-6">
           <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
-          {TOOLS.length} tools · 100% client-side · open source
+          {readyTools.length} tools · 100% client-side · open source
         </div>
 
         <h1 className="mx-auto max-w-2xl font-mono text-4xl font-bold tracking-tighter sm:text-5xl lg:text-6xl">
@@ -217,6 +218,47 @@ export default function Home() {
           })}
         </div>
       </div>
+
+      {/* Support CTA */}
+      <section className="relative z-10 mx-auto max-w-2xl px-4 pb-16 text-center sm:px-6">
+        <div className="rounded-xl border bg-card p-8">
+          <h2 className="text-lg font-semibold tracking-tight">
+            Enjoying BackendKit?
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            If any of these tools saved you time, consider starring the repo, sponsoring the project, or following along on X.
+          </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://github.com/MaheshPawaar/backendkit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              <Star className="h-4 w-4 text-orange-500" />
+              Star on GitHub
+            </a>
+            <a
+              href="https://github.com/sponsors/MaheshPawaar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              <Heart className="h-4 w-4 text-pink-500" />
+              Sponsor
+            </a>
+            <a
+              href="https://x.com/MaheshPawaar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              <Twitter className="h-4 w-4" />
+              Follow on X
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="relative z-10 border-t">

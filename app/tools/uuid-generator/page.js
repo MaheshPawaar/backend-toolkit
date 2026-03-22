@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -52,8 +52,11 @@ export default function UuidGeneratorPage() {
   const [count, setCount] = useState("1");
   const [uppercase, setUppercase] = useState(false);
   const { copy } = useClipboard();
+  const [spinning, setSpinning] = useState(false);
 
   const generate = useCallback(() => {
+    setSpinning(true);
+    setTimeout(() => setSpinning(false), 400);
     const num = Math.min(Math.max(1, parseInt(count) || 1), 50);
     const newUuids = Array.from({ length: num }, () => {
       const id = version === "v4" ? generateUUIDv4() : generateUUIDv7();
@@ -128,7 +131,7 @@ export default function UuidGeneratorPage() {
             onClick={generate}
             className="h-8 text-xs gap-1.5"
           >
-            <RefreshCw className="h-3 w-3" />
+            <RefreshCw className={`h-3 w-3 transition-transform ${spinning ? "animate-spin" : ""}`} />
             Generate
           </Button>
         </div>
@@ -175,6 +178,10 @@ export default function UuidGeneratorPage() {
           </p>
         </Card>
       </div>
+
+      <p className="mt-4 text-xs text-muted-foreground/60">
+        Use when you need unique IDs for database records, API keys, or request tracing. v4 for randomness, v7 for sortable timestamps.
+      </p>
     </ToolLayout>
   );
 }

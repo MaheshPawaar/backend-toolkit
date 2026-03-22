@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,37 @@ export default function JsonFormatterPage() {
       }
 
       try {
-        const parsed = JSON.parse(text);
+        // First try parsing as-is
+        let parsed;
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          // Strip newlines/carriage returns only outside quoted strings
+          let cleaned = "";
+          let inString = false;
+          let escaped = false;
+          for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            if (escaped) {
+              cleaned += ch;
+              escaped = false;
+              continue;
+            }
+            if (ch === "\\") {
+              cleaned += ch;
+              escaped = true;
+              continue;
+            }
+            if (ch === '"') {
+              inString = !inString;
+            }
+            if (!inString && (ch === "\n" || ch === "\r")) {
+              continue;
+            }
+            cleaned += ch;
+          }
+          parsed = JSON.parse(cleaned);
+        }
         setError("");
 
         if (currentMode === "format") {
@@ -49,10 +79,22 @@ export default function JsonFormatterPage() {
     []
   );
 
+  const debounceRef = useRef(null);
+
   const handleInputChange = (value) => {
     setInput(value);
-    processJson(value, mode, indent);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      processJson(value, mode, indent);
+    }, 300);
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
 
   const handleModeChange = (newMode) => {
     setMode(newMode);
@@ -147,7 +189,7 @@ export default function JsonFormatterPage() {
       {/* Input / Output */}
       <div className="grid gap-4 lg:grid-cols-2">
         <Card className="p-0 overflow-hidden">
-          <div className="flex items-center justify-between border-b px-3 py-2">
+          <div className="flex items-center justify-between border-b px-3 h-10">
             <span className="text-xs font-medium text-muted-foreground">
               Input
             </span>
@@ -161,12 +203,12 @@ export default function JsonFormatterPage() {
             placeholder='Paste your JSON here...&#10;&#10;{"key": "value"}'
             value={input}
             onChange={(e) => handleInputChange(e.target.value)}
-            className="min-h-[400px] resize-none rounded-none border-0 font-mono text-sm focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="h-[500px] resize-none rounded-none border-0 font-mono text-sm focus-visible:ring-0 focus-visible:ring-offset-0 overflow-auto"
           />
         </Card>
 
         <Card className="p-0 overflow-hidden">
-          <div className="flex items-center justify-between border-b px-3 py-2">
+          <div className="flex items-center justify-between border-b px-3 h-10">
             <span className="text-xs font-medium text-muted-foreground">
               Output
             </span>
@@ -186,7 +228,7 @@ export default function JsonFormatterPage() {
               </div>
             </div>
           ) : (
-            <pre className="min-h-[400px] overflow-auto p-4 font-mono text-sm text-foreground whitespace-pre-wrap">
+            <pre className="h-[500px] overflow-auto p-4 font-mono text-sm text-foreground whitespace-pre-wrap">
               {output || (
                 <span className="text-muted-foreground/50">
                   Formatted output will appear here...
@@ -196,6 +238,10 @@ export default function JsonFormatterPage() {
           )}
         </Card>
       </div>
+
+      <p className="mt-4 text-xs text-muted-foreground/60">
+        Use when debugging API responses, validating config files, or making minified JSON readable.
+      </p>
     </ToolLayout>
   );
 }

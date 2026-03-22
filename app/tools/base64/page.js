@@ -139,7 +139,7 @@ export default function Base64Page() {
       {/* Input / Output */}
       <div className="grid gap-4 lg:grid-cols-2">
         <Card className="p-0 overflow-hidden">
-          <div className="flex items-center justify-between border-b px-3 py-2">
+          <div className="flex items-center justify-between border-b px-3 h-10">
             <span className="text-xs font-medium text-muted-foreground">
               {mode === "encode" ? "Plain Text" : "Base64 Input"}
             </span>
@@ -162,7 +162,7 @@ export default function Base64Page() {
         </Card>
 
         <Card className="p-0 overflow-hidden">
-          <div className="flex items-center justify-between border-b px-3 py-2">
+          <div className="flex items-center justify-between border-b px-3 h-10">
             <span className="text-xs font-medium text-muted-foreground">
               {mode === "encode" ? "Base64 Output" : "Decoded Text"}
             </span>
@@ -194,6 +194,10 @@ export default function Base64Page() {
           )}
         </Card>
       </div>
+
+      <p className="mt-4 text-xs text-muted-foreground/60">
+        Use when encoding credentials for HTTP headers, embedding files in JSON, or decoding JWT parts manually.
+      </p>
     </ToolLayout>
   );
 }
