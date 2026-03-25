@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -47,7 +47,7 @@ function generateUUIDv7() {
 }
 
 export default function UuidGeneratorPage() {
-  const [uuids, setUuids] = useState([]);
+  const [uuids, setUuids] = useState(() => [generateUUIDv4()]);
   const [version, setVersion] = useState("v4");
   const [count, setCount] = useState("1");
   const [uppercase, setUppercase] = useState(false);
@@ -64,11 +64,6 @@ export default function UuidGeneratorPage() {
     });
     setUuids(newUuids);
   }, [version, count, uppercase]);
-
-  // Generate on mount and when settings change
-  useEffect(() => {
-    generate();
-  }, [generate]);
 
   const copyAll = () => {
     copy(uuids.join("\n"));

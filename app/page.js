@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { Search, Github, Star, Heart, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,11 +13,11 @@ import { TOOLS, CATEGORIES } from "@/data/tool-registry";
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [cmdOpen, setCmdOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const readyTools = TOOLS.filter((t) => t.ready);
   const filtered =
