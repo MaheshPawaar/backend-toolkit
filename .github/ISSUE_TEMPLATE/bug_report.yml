@@ -1,0 +1,33 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      placeholder: Describe the bug clearly
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: What did you expect to happen?
+    validations:
+      required: true
+  - type: input
+    id: tool
+    attributes:
+      label: Which tool?
+      placeholder: e.g., JSON Formatter, JWT Decoder
+  - type: input
+    id: browser
+    attributes:
+      label: Browser & OS
+      placeholder: e.g., Chrome 120, macOS 14
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      placeholder: If applicable, add screenshots

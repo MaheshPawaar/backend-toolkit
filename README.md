@@ -25,7 +25,7 @@
 
 A privacy-first collection of browser-based tools built for backend and API engineers. No server, no tracking, no data leaves your browser. Everything runs locally.
 
-<!-- **Live demo:** https://yourusername.github.io/backendkit/ -->
+**Live:** [backendkit.maheshpawar.me](https://backendkit.maheshpawar.me)
 
 ## Features
 
@@ -51,8 +51,8 @@ A privacy-first collection of browser-based tools built for backend and API engi
 
 ```bash
 # Clone the repo
-git clone https://github.com/YourUsername/backendkit.git
-cd backendkit
+git clone https://github.com/MaheshPawaar/backend-toolkit.git
+cd backend-toolkit
 
 # Install dependencies
 npm install
