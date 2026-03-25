@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Search, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
@@ -13,7 +14,7 @@ export function Header({ onOpenSearch }) {
         <div className="flex items-center gap-2">
           <MobileNav />
           <Link href="/" className="flex items-center gap-2.5">
-            <img src="/logo.svg" alt="BackendKit" className="h-7 w-7" />
+            <Image src="/logo.svg" alt="BackendKit" width={28} height={28} unoptimized />
             <span className="font-mono text-sm font-semibold tracking-tight">
               backend<span className="text-orange-500">Kit</span>
             </span>
@@ -45,7 +46,7 @@ export function Header({ onOpenSearch }) {
           <ThemeToggle />
 
           <a
-            href="https://github.com/MaheshPawaar"
+            href="https://github.com/MaheshPawaar/backend-toolkit"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-sm hover:bg-muted transition-colors"
