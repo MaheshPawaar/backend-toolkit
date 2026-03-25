@@ -26,12 +26,14 @@ export const metadata = {
     url: "https://backendkit.maheshpawar.me",
     siteName: "backendKit",
     type: "website",
+    images: [{ url: "/image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "backendKit — Every Tool a Backend Dev Googles Daily",
     description:
       "JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.",
+    images: ["/image.png"],
   },
 };
 
