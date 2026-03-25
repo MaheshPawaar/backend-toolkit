@@ -15,9 +15,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "BackendKit — Every Tool a Backend Dev Needs",
+  title: "backendKit — Every Tool a Backend Dev Googles Daily",
   description:
     "Privacy-first, client-side collection of tools for backend engineers. No server. No tracking. No data leaves the browser.",
+  metadataBase: new URL("https://backendkit.maheshpawar.me"),
+  openGraph: {
+    title: "backendKit — Every Tool a Backend Dev Googles Daily",
+    description:
+      "JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.",
+    url: "https://backendkit.maheshpawar.me",
+    siteName: "backendKit",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "backendKit — Every Tool a Backend Dev Googles Daily",
+    description:
+      "JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,0 +1,27 @@
+name: Feature / Tool Request
+description: Suggest a new tool or feature
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What tool or feature would you like?
+      placeholder: Describe the tool, what it does, and when a developer would use it
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Formatting
+        - Auth & Security
+        - Data & Encoding
+        - API & HTTP
+        - Infra & Config
+        - Other
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples or references
+      placeholder: Links to similar tools or examples of input/output
