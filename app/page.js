@@ -48,7 +48,7 @@ export default function Home() {
               B
             </div>
             <span className="font-mono text-sm font-semibold tracking-tight">
-              backend<span className="text-orange-500">kit</span>
+              backend<span className="text-orange-500">Kit</span>
             </span>
           </Link>
 
@@ -252,7 +252,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 text-xs text-muted-foreground sm:px-6">
           <div className="flex items-center gap-1.5">
             <span className="font-mono text-foreground/60">
-              backend<span className="text-orange-500">kit</span>
+              backend<span className="text-orange-500">Kit</span>
             </span>
             <span>· Built by Mahesh</span>
           </div>

@@ -13,11 +13,9 @@ export function Header({ onOpenSearch }) {
         <div className="flex items-center gap-2">
           <MobileNav />
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground shadow-sm">
-              B
-            </div>
+            <img src="/logo.svg" alt="BackendKit" className="h-7 w-7" />
             <span className="font-mono text-sm font-semibold tracking-tight">
-              backend<span className="text-orange-500">kit</span>
+              backend<span className="text-orange-500">Kit</span>
             </span>
           </Link>
         </div>
