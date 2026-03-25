@@ -44,9 +44,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 font-mono text-sm font-bold text-white shadow-[0_0_16px_hsl(24_95%_53%/0.25)]">
-              B
-            </div>
+            <img src="/logo.svg" alt="BackendKit" className="h-7 w-7" />
             <span className="font-mono text-sm font-semibold tracking-tight">
               backend<span className="text-orange-500">Kit</span>
             </span>
