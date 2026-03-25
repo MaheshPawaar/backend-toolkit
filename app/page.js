@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Search, Github, Star, Heart, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -44,7 +45,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <img src="/logo.svg" alt="BackendKit" className="h-7 w-7" />
+            <Image src="/logo.svg" alt="BackendKit" width={28} height={28} unoptimized />
             <span className="font-mono text-sm font-semibold tracking-tight">
               backend<span className="text-orange-500">Kit</span>
             </span>
@@ -75,7 +76,7 @@ export default function Home() {
             <ThemeToggle />
 
             <a
-              href="https://github.com/MaheshPawaar"
+              href="https://github.com/MaheshPawaar/backend-toolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-sm hover:bg-muted transition-colors"
@@ -247,16 +248,16 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 text-xs text-muted-foreground sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:px-6">
           <div className="flex items-center gap-1.5">
             <span className="font-mono text-foreground/60">
               backend<span className="text-orange-500">Kit</span>
             </span>
-            <span>· Built by Mahesh</span>
+            <span>· Built by <a href="https://maheshpawar.me" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground underline underline-offset-2">Mahesh Pawar</a></span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="hidden items-center gap-4 sm:flex">
             <a
-              href="https://github.com/MaheshPawaar"
+              href="https://github.com/MaheshPawaar/backend-toolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-foreground"
@@ -264,7 +265,9 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="#"
+              href="https://github.com/MaheshPawaar"
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors hover:text-foreground"
             >
               @MaheshPawaar

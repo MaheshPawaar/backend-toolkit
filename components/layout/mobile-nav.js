@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,7 +30,7 @@ export function MobileNav() {
       <SheetContent side="left" className="w-72 p-0">
         <SheetHeader className="px-4 pt-4 pb-2">
           <SheetTitle className="flex items-center gap-2 font-mono text-sm">
-            <img src="/logo.svg" alt="BackendKit" className="h-6 w-6" />
+            <Image src="/logo.svg" alt="BackendKit" width={24} height={24} unoptimized />
             <span>backend<span className="text-orange-500">Kit</span></span>
           </SheetTitle>
         </SheetHeader>
