@@ -2,6 +2,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,6 +45,18 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-SQD61X2W18"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SQD61X2W18');
+        `}
+      </Script>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"

@@ -16,7 +16,7 @@ export function Header({ onOpenSearch }) {
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/logo.svg" alt="BackendKit" width={28} height={28} unoptimized />
             <span className="font-mono text-sm font-semibold tracking-tight">
-              backend<span className="text-orange-500">Kit</span>
+              Backend<span className="text-orange-500">Kit</span>
             </span>
           </Link>
         </div>

@@ -47,7 +47,7 @@ export default function Home() {
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/logo.svg" alt="BackendKit" width={28} height={28} unoptimized />
             <span className="font-mono text-sm font-semibold tracking-tight">
-              backend<span className="text-orange-500">Kit</span>
+              Backend<span className="text-orange-500">Kit</span>
             </span>
           </Link>
 
@@ -175,8 +175,12 @@ export default function Home() {
                       {tool.isNew && (
                         <Badge
                           variant="secondary"
-                          className="border-green-500/20 bg-green-500/10 text-green-500 text-[10px] uppercase tracking-wide px-2 py-0"
+                          className="border-green-500/20 bg-green-500/10 text-green-500 text-[10px] uppercase tracking-wide px-2 py-0 gap-1"
                         >
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
+                          </span>
                           New
                         </Badge>
                       )}
@@ -251,7 +255,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:px-6">
           <div className="flex items-center gap-1.5">
             <span className="font-mono text-foreground/60">
-              backend<span className="text-orange-500">Kit</span>
+              Backend<span className="text-orange-500">Kit</span>
             </span>
             <span>· Built by <a href="https://maheshpawar.me" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground underline underline-offset-2">Mahesh Pawar</a></span>
           </div>

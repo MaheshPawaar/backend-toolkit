@@ -31,7 +31,7 @@ export function MobileNav() {
         <SheetHeader className="px-4 pt-4 pb-2">
           <SheetTitle className="flex items-center gap-2 font-mono text-sm">
             <Image src="/logo.svg" alt="BackendKit" width={24} height={24} unoptimized />
-            <span>backend<span className="text-orange-500">Kit</span></span>
+            <span>Backend<span className="text-orange-500">Kit</span></span>
           </SheetTitle>
         </SheetHeader>
         <Separator />
