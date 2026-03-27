@@ -16,6 +16,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
+  verification: {
+    google: "WikW1haLi-ImrBRnA04vikVciLyfK-FpmZVZ1jpI6QE",
+  },
   title: "backendKit — Every Tool a Backend Dev Googles Daily",
   description:
     "Privacy-first, client-side collection of tools for backend engineers. No server. No tracking. No data leaves the browser.",
