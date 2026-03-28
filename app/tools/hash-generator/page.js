@@ -121,16 +121,19 @@ export default function HashGeneratorPage() {
   }, []);
 
   // Re-hash on text input change
-  useEffect(() => {
-    if (inputMode !== "Text") return;
-    if (!input) {
-      setHashes(null);
-      setHashing(false);
-      return;
-    }
-    const buffer = new TextEncoder().encode(input).buffer;
-    runHashes(buffer);
-  }, [input, inputMode, runHashes]);
+  const handleTextInput = useCallback(
+    (text) => {
+      setInput(text);
+      if (!text) {
+        setHashes(null);
+        setHashing(false);
+        return;
+      }
+      const buffer = new TextEncoder().encode(text).buffer;
+      runHashes(buffer);
+    },
+    [runHashes]
+  );
 
   // Read file and hash it
   const handleFile = useCallback(
@@ -205,13 +208,11 @@ export default function HashGeneratorPage() {
     if (inputMode === "File") {
       setInputMode("Text");
     }
-    setInput(SAMPLE_TEXT);
+    handleTextInput(SAMPLE_TEXT);
   };
 
   const handleClear = () => {
-    setInput("");
-    setHashes(null);
-    setHashing(false);
+    handleTextInput("");
     setFileName("");
     setFileSize(0);
     setFileWarning("");
@@ -231,9 +232,7 @@ export default function HashGeneratorPage() {
 
   const handleModeSwitch = (mode) => {
     setInputMode(mode);
-    setInput("");
-    setHashes(null);
-    setHashing(false);
+    handleTextInput("");
     setFileName("");
     setFileSize(0);
     setFileWarning("");
@@ -333,7 +332,7 @@ export default function HashGeneratorPage() {
           <Textarea
             placeholder="Type or paste text to hash…"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => handleTextInput(e.target.value)}
             className="h-[200px] resize-none rounded-none border-0 font-mono text-sm focus-visible:ring-0 focus-visible:ring-offset-0 overflow-auto"
           />
         </Card>
