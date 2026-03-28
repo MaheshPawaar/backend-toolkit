@@ -220,7 +220,7 @@ export default function Home() {
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://github.com/MaheshPawaar/backendkit"
+              href="https://github.com/MaheshPawaar/backend-toolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
