@@ -1,43 +1,43 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { Toaster } from "sonner";
-import { ThemeProvider } from "@/components/layout/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Script from "next/script";
-import "./globals.css";
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/components/layout/theme-provider';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import Script from 'next/script';
+import './globals.css';
 
 const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
+  variable: '--font-sans',
+  subsets: ['latin'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
+  variable: '--font-mono',
+  subsets: ['latin'],
 });
 
 export const metadata = {
   verification: {
-    google: "WikW1haLi-ImrBRnA04vikVciLyfK-FpmZVZ1jpI6QE",
+    google: 'WikW1haLi-ImrBRnA04vikVciLyfK-FpmZVZ1jpI6QE',
   },
-  title: "backendKit — Every Tool a Backend Dev Googles Daily",
+  title: 'BackendKit — Every Tool a Backend Dev Googles Daily',
   description:
-    "Privacy-first, client-side collection of tools for backend engineers. No server. No tracking. No data leaves the browser.",
-  metadataBase: new URL("https://backendkit.maheshpawar.me"),
+    'Privacy-first, client-side collection of tools for backend engineers. No server. No tracking. No data leaves the browser.',
+  metadataBase: new URL('https://backendkit.maheshpawar.me'),
   openGraph: {
-    title: "backendKit — Every Tool a Backend Dev Googles Daily",
+    title: 'backendKit — Every Tool a Backend Dev Googles Daily',
     description:
-      "JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.",
-    url: "https://backendkit.maheshpawar.me",
-    siteName: "backendKit",
-    type: "website",
-    images: [{ url: "/image.png", width: 1200, height: 630 }],
+      'JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.',
+    url: 'https://backendkit.maheshpawar.me',
+    siteName: 'backendKit',
+    type: 'website',
+    images: [{ url: '/image.png', width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "backendKit — Every Tool a Backend Dev Googles Daily",
+    card: 'summary_large_image',
+    title: 'backendKit — Every Tool a Backend Dev Googles Daily',
     description:
-      "JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.",
-    images: ["/image.png"],
+      'JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.',
+    images: ['/image.png'],
   },
 };
 

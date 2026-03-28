@@ -7,6 +7,8 @@ import {
   ShieldCheck,
   Globe,
   Terminal,
+  Clock,
+  Hash,
 } from 'lucide-react';
 
 export const CATEGORIES = [
@@ -64,6 +66,26 @@ export const TOOLS = [
     route: '/tools/json-csv',
     icon: FileSpreadsheet,
     phase: 2,
+    isNew: true,
+    ready: true,
+  },
+  {
+    name: 'Timestamp Converter',
+    desc: 'Convert Unix timestamps to dates & back, with timezone support',
+    category: 'data',
+    route: '/tools/timestamp',
+    icon: Clock,
+    phase: 1,
+    isNew: true,
+    ready: true,
+  },
+  {
+    name: 'Hash Generator',
+    desc: 'Generate SHA-256, SHA-384, SHA-512, SHA-1 & MD5 hashes instantly',
+    category: 'data',
+    route: '/tools/hash-generator',
+    icon: Hash,
+    phase: 1,
     isNew: true,
     ready: true,
   },
