@@ -9,6 +9,7 @@ import {
   Terminal,
   Clock,
   Hash,
+  Link,
 } from 'lucide-react';
 
 export const CATEGORIES = [
@@ -85,6 +86,16 @@ export const TOOLS = [
     category: 'data',
     route: '/tools/hash-generator',
     icon: Hash,
+    phase: 1,
+    isNew: true,
+    ready: true,
+  },
+  {
+    name: 'URL Encode / Decode',
+    desc: 'Encode & decode URL components with full Unicode support',
+    category: 'data',
+    route: '/tools/url-encoder',
+    icon: Link,
     phase: 1,
     isNew: true,
     ready: true,
