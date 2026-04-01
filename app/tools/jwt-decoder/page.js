@@ -279,9 +279,53 @@ export default function JwtDecoderPage() {
         </div>
       )}
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when debugging auth flows, checking token expiry, or inspecting claims without a server.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "JWT Decoder — BackendKit",
+            description:
+              "Decode JWT tokens instantly in your browser. Inspect header, payload, expiry and claims. No token ever leaves your machine.",
+            url: "https://backendkit.maheshpawar.me/tools/jwt-decoder",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is JWT Decoder?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          JWT Decoder splits a JSON Web Token into its three parts — header,
+          payload, and signature — and displays them as readable JSON. It also
+          checks whether the token has expired and shows key claims like issuer,
+          subject, and issued-at time. Your token never leaves the browser.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Debugging OAuth and authentication flows</li>
+          <li>Checking if a token is expired before making API calls</li>
+          <li>Inspecting custom claims added by your auth provider</li>
+          <li>Verifying the algorithm and token type in the header</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Paste a JWT token into the input field</li>
+          <li>View the decoded header, payload, and claims summary</li>
+          <li>Copy any section with one click</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

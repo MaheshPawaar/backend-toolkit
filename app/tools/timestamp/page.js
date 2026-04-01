@@ -611,9 +611,54 @@ export default function TimestampPage() {
         )}
       </div>
 
-      <p className="mt-6 text-xs text-muted-foreground/60">
-        Use when debugging API responses, reading log timestamps, or converting between date formats for database inserts and cron schedules.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Unix Timestamp Converter — BackendKit",
+            description:
+              "Convert Unix timestamps to human-readable dates and back. Supports seconds and milliseconds, multiple timezones, and real-time clock.",
+            url: "https://backendkit.maheshpawar.me/tools/timestamp",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is Unix Timestamp Converter?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Unix timestamps count the seconds (or milliseconds) since January 1,
+          1970 UTC. This tool converts epoch timestamps to human-readable dates
+          and lets you build timestamps from a date picker. It auto-detects
+          seconds vs. milliseconds and shows ISO 8601, RFC 2822, relative time,
+          and more.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Decoding epoch timestamps from logs and database records</li>
+          <li>Generating timestamps for cron jobs and scheduled tasks</li>
+          <li>Comparing timestamps across different timezones</li>
+          <li>Checking token expiry times from JWT or OAuth responses</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Paste a Unix timestamp to see the formatted date</li>
+          <li>Or use the date picker to generate a timestamp</li>
+          <li>Copy any output value with one click</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

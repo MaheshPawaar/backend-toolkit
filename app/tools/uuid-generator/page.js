@@ -174,9 +174,53 @@ export default function UuidGeneratorPage() {
         </Card>
       </div>
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when you need unique IDs for database records, API keys, or request tracing. v4 for randomness, v7 for sortable timestamps.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "UUID Generator — BackendKit",
+            description:
+              "Generate UUID v4 (random) and v7 (timestamp-sortable) identifiers instantly. Powered by Web Crypto API.",
+            url: "https://backendkit.maheshpawar.me/tools/uuid-generator",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is UUID Generator?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          UUID Generator creates universally unique identifiers using your
+          browser&apos;s Web Crypto API. It supports UUID v4 (fully random) and
+          UUID v7 (timestamp-sortable, per RFC 9562). Generate up to 50 IDs at
+          once, with optional uppercase formatting.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Generating primary keys for database records</li>
+          <li>Creating unique request or correlation IDs for tracing</li>
+          <li>Producing API keys or session identifiers during development</li>
+          <li>Using v7 UUIDs as sortable IDs in distributed systems</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Pick UUID v4 or v7 and set the count</li>
+          <li>Click Generate to create new UUIDs</li>
+          <li>Copy individual IDs or all at once</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

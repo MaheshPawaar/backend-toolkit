@@ -195,9 +195,53 @@ export default function Base64Page() {
         </Card>
       </div>
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when encoding credentials for HTTP headers, embedding files in JSON, or decoding JWT parts manually.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Base64 Encode & Decode — BackendKit",
+            description:
+              "Encode and decode Base64 strings instantly in your browser. Full Unicode support. No data sent to any server.",
+            url: "https://backendkit.maheshpawar.me/tools/base64",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is Base64 Encoding?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Base64 converts binary data into a text-safe format using 64 ASCII
+          characters. This tool encodes plain text to Base64 and decodes Base64
+          back to text, with full Unicode support. Useful whenever you need to
+          embed binary data in text-only formats like JSON, XML, or HTTP headers.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Encoding credentials for HTTP Basic Auth headers</li>
+          <li>Decoding Base64-encoded API responses or webhook payloads</li>
+          <li>Embedding small files or images in JSON or data URIs</li>
+          <li>Manually inspecting Base64 parts of a JWT token</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Choose Encode or Decode mode</li>
+          <li>Paste your text or Base64 string into the input</li>
+          <li>Copy the result or use Swap to reverse the operation</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

@@ -450,11 +450,54 @@ export default function HashGeneratorPage() {
         )}
       </Card>
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        SHA-256 and above are recommended for integrity verification. SHA-1 and
-        MD5 are cryptographically broken. Use only for legacy compatibility or
-        non-security checksums.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Hash Generator — BackendKit",
+            description:
+              "Generate SHA-256, SHA-384, SHA-512, SHA-1, and MD5 hashes instantly in your browser. No data sent to any server.",
+            url: "https://backendkit.maheshpawar.me/tools/hash-generator",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is Hash Generator?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Hash Generator computes cryptographic hashes for text or files using
+          SHA-256, SHA-384, SHA-512, SHA-1, and MD5. Output is available in Hex
+          or Base64 encoding. All hashing runs in a Web Worker so large files
+          won&apos;t freeze your browser. SHA-1 and MD5 are marked insecure —
+          use SHA-256 or above for security-sensitive work.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Verifying file integrity after downloads</li>
+          <li>Generating content hashes for cache busting or ETags</li>
+          <li>Computing checksums for deployment artifacts</li>
+          <li>Comparing MD5/SHA hashes from third-party documentation</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Type text or drop a file to hash</li>
+          <li>All five hash algorithms compute simultaneously</li>
+          <li>Toggle between Hex and Base64 output, then copy</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

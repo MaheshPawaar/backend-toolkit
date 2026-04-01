@@ -188,9 +188,54 @@ export default function UrlEncoderPage() {
         </Card>
       </div>
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when building query strings, encoding form data, or debugging URL parameters with special characters.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "URL Encoder & Decoder — BackendKit",
+            description:
+              "Encode and decode URL components instantly in your browser. Full Unicode support. No data sent to any server.",
+            url: "https://backendkit.maheshpawar.me/tools/url-encoder",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is URL Encoder / Decoder?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          URL encoding (percent-encoding) replaces special characters with{" "}
+          <code className="text-xs bg-muted px-1 rounded">%XX</code> sequences
+          so they can be safely used in URLs. This tool encodes plain text for
+          use in query parameters and decodes percent-encoded strings back to
+          readable text, with full Unicode support.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Building query strings with special characters or spaces</li>
+          <li>Debugging encoded URLs from logs or redirect chains</li>
+          <li>Encoding form data for application/x-www-form-urlencoded requests</li>
+          <li>Decoding OAuth callback URLs with encoded parameters</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Choose Encode or Decode mode</li>
+          <li>Paste your text or encoded URL into the input</li>
+          <li>Copy the result or use Swap to reverse the operation</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }
