@@ -39,6 +39,9 @@ export const metadata = {
       'JSON formatter, JWT decoder, Base64 codec, UUID generator and more. 100% client-side, no data leaves the browser.',
     images: ['/image.png'],
   },
+  alternates: {
+    canonical: 'https://backendkit.maheshpawar.me',
+  },
 };
 
 export default function RootLayout({ children }) {

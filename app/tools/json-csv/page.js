@@ -209,9 +209,53 @@ export default function JsonCsvPage() {
           )}
         </Card>
       </div>
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when exporting API responses to spreadsheets, converting database dumps, or sharing structured data with non-technical teammates.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "JSON to CSV Converter — BackendKit",
+            description:
+              "Convert JSON arrays to CSV instantly in your browser. Handles large datasets without freezing. No data sent to any server.",
+            url: "https://backendkit.maheshpawar.me/tools/json-csv",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is JSON to CSV Converter?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          This tool converts JSON arrays into CSV format that you can open in
+          Excel, Google Sheets, or any spreadsheet app. It automatically
+          flattens nested objects into column headers and handles large files in
+          a Web Worker so your browser stays responsive.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Exporting API responses into a spreadsheet for analysis</li>
+          <li>Converting database query results for non-technical stakeholders</li>
+          <li>Preparing data exports for CSV-based import tools</li>
+          <li>Quick data inspection without writing a script</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Paste a JSON array or upload a .json file</li>
+          <li>View the CSV output in real-time</li>
+          <li>Copy the result or download as a .csv file</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }

@@ -239,9 +239,54 @@ export default function JsonFormatterPage() {
         </Card>
       </div>
 
-      <p className="mt-4 text-xs text-muted-foreground/60">
-        Use when debugging API responses, validating config files, or making minified JSON readable.
-      </p>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "JSON Formatter & Validator — BackendKit",
+            description:
+              "Format, minify and validate JSON instantly in your browser. No data leaves your machine.",
+            url: "https://backendkit.maheshpawar.me/tools/json-formatter",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0" },
+            featureList:
+              "Free, No signup, Client-side only, Privacy-first",
+          }),
+        }}
+      />
+
+      <section className="mt-8 space-y-4 border-t border-border pt-6">
+        <h2 className="text-lg font-semibold text-foreground">
+          What is JSON Formatter?
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          JSON Formatter takes raw or minified JSON and formats it with proper
+          indentation so you can read it at a glance. It also validates the
+          syntax in real-time — if something is off, you&apos;ll see the exact
+          error. Everything runs in your browser; no data is ever sent to a
+          server.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Common Use Cases
+        </h3>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+          <li>Pretty-printing API responses from curl or Postman</li>
+          <li>Validating JSON config files before deploying</li>
+          <li>Minifying payloads to reduce request size</li>
+          <li>Debugging webhook payloads and event data</li>
+        </ul>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+          <li>Paste your JSON into the input panel</li>
+          <li>Choose Format or Minify mode and pick your indentation</li>
+          <li>Copy the result with one click</li>
+        </ol>
+      </section>
     </ToolLayout>
   );
 }
