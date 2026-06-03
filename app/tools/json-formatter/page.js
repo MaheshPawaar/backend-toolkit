@@ -265,7 +265,7 @@ export default function JsonFormatterPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           JSON Formatter takes raw or minified JSON and formats it with proper
           indentation so you can read it at a glance. It also validates the
-          syntax in real-time — if something is off, you&apos;ll see the exact
+          syntax in real-time - if something is off, you&apos;ll see the exact
           error. Everything runs in your browser; no data is ever sent to a
           server.
         </p>

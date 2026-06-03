@@ -86,8 +86,8 @@ export default function Base64Page() {
 
   return (
     <ToolLayout
-      name="Base64 Codec"
-      description="Encode and decode Base64 strings instantly. Supports Unicode characters."
+      name="Base64 Encode & Decode Online"
+      description="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 to text instantly in your browser - full Unicode support, no server, no tracking."
       category="data"
     >
       {/* Controls */}
@@ -200,16 +200,73 @@ export default function Base64Page() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebApplication",
-            name: "Base64 Encode & Decode — BackendKit",
-            description:
-              "Encode and decode Base64 strings instantly in your browser. Full Unicode support. No data sent to any server.",
-            url: "https://backendkit.maheshpawar.me/tools/base64",
-            applicationCategory: "DeveloperApplication",
-            operatingSystem: "Any",
-            offers: { "@type": "Offer", price: "0" },
-            featureList:
-              "Free, No signup, Client-side only, Privacy-first",
+            "@graph": [
+              {
+                "@type": "WebApplication",
+                name: "Base64 Encode & Decode - BackendKit",
+                description:
+                  "Encode and decode Base64 strings instantly in your browser. Full Unicode support. No data sent to any server.",
+                url: "https://backendkit.maheshpawar.me/tools/base64",
+                applicationCategory: "DeveloperApplication",
+                operatingSystem: "Any",
+                offers: { "@type": "Offer", price: "0" },
+                featureList: "Free, No signup, Client-side only, Privacy-first",
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "BackendKit",
+                    item: "https://backendkit.maheshpawar.me",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Base64 Encode & Decode",
+                    item: "https://backendkit.maheshpawar.me/tools/base64",
+                  },
+                ],
+              },
+              {
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "Is Base64 encryption?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "No. Base64 is an encoding scheme, not encryption. Anyone can decode a Base64 string without a key, so never use it to protect sensitive data - use real encryption such as AES-256 instead.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Why is my Base64 output larger than the input?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Base64 encodes every 3 bytes of input into 4 ASCII characters, which adds roughly 33% size overhead. That is the cost of representing binary data in a text-safe format.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Does this Base64 tool send my data to a server?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "No. All encoding and decoding runs entirely in your browser using JavaScript. No data is transmitted over the network - you can verify this in your browser's Network tab.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What is the difference between Base64 and Base64URL?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Standard Base64 uses + and / and pads with =. Base64URL replaces + and / with - and _ and drops the padding so the result is safe to use in URLs, filenames, and query parameters. JWT tokens use Base64URL.",
+                    },
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />
@@ -219,28 +276,133 @@ export default function Base64Page() {
           What is Base64 Encoding?
         </h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Base64 converts binary data into a text-safe format using 64 ASCII
-          characters. This tool encodes plain text to Base64 and decodes Base64
-          back to text, with full Unicode support. Useful whenever you need to
-          embed binary data in text-only formats like JSON, XML, or HTTP headers.
+          Base64 is a binary-to-text encoding scheme that represents binary data
+          using 64 ASCII characters: the uppercase letters A–Z, the lowercase
+          letters a–z, the digits 0–9, and the symbols <code>+</code> and{" "}
+          <code>/</code>. It was designed to carry data stored in binary formats
+          across channels that only reliably support plain text. This online
+          Base64 encoder and decoder converts text to Base64 and decodes Base64
+          back to readable text entirely in your browser, with full Unicode
+          (UTF-8) support so accented characters, emoji, and non-Latin scripts
+          all round-trip correctly.
         </p>
 
         <h3 className="text-sm font-semibold text-foreground">
-          Common Use Cases
+          How Base64 Encoding Works
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Base64 splits the input into groups of 3 bytes (24 bits) and then
+          re-groups those bits into four 6-bit chunks. Each 6-bit chunk indexes
+          into the 64-character alphabet to produce one output character, so
+          every 3 bytes become 4 characters - roughly a 33% size increase. When
+          the input length is not a multiple of 3, the final group is padded with
+          one or two <code>=</code> characters so the output length stays a
+          multiple of four.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          When Do Backend Developers Use Base64?
         </h3>
         <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-          <li>Encoding credentials for HTTP Basic Auth headers</li>
-          <li>Decoding Base64-encoded API responses or webhook payloads</li>
-          <li>Embedding small files or images in JSON or data URIs</li>
-          <li>Manually inspecting Base64 parts of a JWT token</li>
+          <li>Encoding credentials for HTTP Basic Authentication headers</li>
+          <li>Embedding small images or files as data URIs in JSON or HTML</li>
+          <li>Decoding Base64-encoded API responses and webhook payloads</li>
+          <li>Inspecting the header and payload sections of JWT tokens</li>
+          <li>Transmitting binary data through text-only protocols like SMTP</li>
+          <li>Storing config values in environment variables or YAML</li>
         </ul>
 
-        <h3 className="text-sm font-semibold text-foreground">How to Use</h3>
+        <h3 className="text-sm font-semibold text-foreground">
+          Base64 vs Base64URL
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Standard Base64 uses <code>+</code> and <code>/</code> as the 63rd and
+          64th characters and <code>=</code> for padding. Base64URL replaces
+          these with <code>-</code> and <code>_</code> and omits the padding,
+          making the output safe to drop into URLs, filenames, and query
+          parameters without escaping. JWT tokens encode their header and payload
+          segments with Base64URL.
+        </p>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Encode &amp; Decode Base64 in Code
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          The same conversions this tool performs are one-liners in most
+          languages:
+        </p>
+        <pre className="overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-xs leading-relaxed text-muted-foreground">
+          <code>{`# Python
+import base64
+base64.b64encode(b"hello").decode()      # 'aGVsbG8='
+base64.b64decode("aGVsbG8=").decode()    # 'hello'
+
+// Node.js
+Buffer.from("hello").toString("base64")           // 'aGVsbG8='
+Buffer.from("aGVsbG8=", "base64").toString()      // 'hello'
+
+# Shell (coreutils)
+echo -n hello | base64        # aGVsbG8=
+echo aGVsbG8= | base64 -d     # hello`}</code>
+        </pre>
+
+        <h3 className="text-sm font-semibold text-foreground">How to Use This Tool</h3>
         <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
-          <li>Choose Encode or Decode mode</li>
-          <li>Paste your text or Base64 string into the input</li>
-          <li>Copy the result or use Swap to reverse the operation</li>
+          <li>
+            Choose <strong>Encode</strong> to convert plain text to Base64, or{" "}
+            <strong>Decode</strong> to convert Base64 back to text
+          </li>
+          <li>Paste your input - the result appears instantly as you type</li>
+          <li>
+            Click <strong>Copy</strong> to grab the output, or{" "}
+            <strong>Swap</strong> to reverse the operation
+          </li>
         </ol>
+
+        <h3 className="text-sm font-semibold text-foreground">
+          Frequently Asked Questions
+        </h3>
+        <details className="text-sm text-muted-foreground">
+          <summary className="font-medium text-foreground cursor-pointer">
+            Is Base64 encryption?
+          </summary>
+          <p className="mt-1 leading-relaxed">
+            No. Base64 is an encoding, not encryption. Anyone can decode a Base64
+            string without a key. Never use Base64 to protect sensitive data - use
+            proper encryption (AES-256, etc.) instead.
+          </p>
+        </details>
+        <details className="text-sm text-muted-foreground">
+          <summary className="font-medium text-foreground cursor-pointer">
+            Why is my Base64 output larger than the input?
+          </summary>
+          <p className="mt-1 leading-relaxed">
+            Base64 encodes every 3 bytes of input into 4 ASCII characters,
+            resulting in roughly 33% size overhead. This is the trade-off for
+            representing binary data in a text-safe format.
+          </p>
+        </details>
+        <details className="text-sm text-muted-foreground">
+          <summary className="font-medium text-foreground cursor-pointer">
+            Does this tool send my data to a server?
+          </summary>
+          <p className="mt-1 leading-relaxed">
+            No. All encoding and decoding runs entirely in your browser using
+            JavaScript. No data is transmitted over the network. You can verify
+            this by opening your browser&apos;s Network tab.
+          </p>
+        </details>
+        <details className="text-sm text-muted-foreground">
+          <summary className="font-medium text-foreground cursor-pointer">
+            What is the difference between Base64 and Base64URL?
+          </summary>
+          <p className="mt-1 leading-relaxed">
+            Standard Base64 uses <code>+</code> and <code>/</code> and pads with{" "}
+            <code>=</code>. Base64URL replaces them with <code>-</code> and{" "}
+            <code>_</code> and drops the padding, making it safe for URLs,
+            filenames, and query parameters. JWT tokens use Base64URL.
+          </p>
+        </details>
       </section>
     </ToolLayout>
   );
