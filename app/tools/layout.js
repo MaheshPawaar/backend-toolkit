@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, Github } from "lucide-react";
+import { Search, Github, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -59,6 +59,16 @@ export default function ToolsLayout({ children }) {
             >
               <Github className="h-4 w-4" />
             </a>
+            <a
+              href="https://buymeacoffee.com/maheshpawar"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Buy me a coffee"
+              aria-label="Buy me a coffee"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-sm hover:bg-muted transition-colors"
+            >
+              <Coffee className="h-4 w-4 text-amber-500" />
+            </a>
           </div>
         </div>
       </header>
@@ -91,6 +101,14 @@ export default function ToolsLayout({ children }) {
               className="transition-colors hover:text-foreground"
             >
               @MaheshPawaar
+            </a>
+            <a
+              href="https://buymeacoffee.com/maheshpawar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              Buy me a coffee
             </a>
           </div>
         </div>

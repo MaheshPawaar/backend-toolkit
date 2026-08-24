@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, Github, Star, Heart, Twitter } from "lucide-react";
+import { Search, Github, Star, Heart, Twitter, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -216,7 +216,7 @@ export default function Home() {
             Enjoying BackendKit?
           </h2>
           <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-            If any of these tools saved you time, consider starring the repo, sponsoring the project, or following along on X.
+            If any of these tools saved you time, consider starring the repo, buying me a coffee, or following along on X.
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <a
@@ -236,6 +236,15 @@ export default function Home() {
             >
               <Heart className="h-4 w-4 text-pink-500" />
               Sponsor
+            </a>
+            <a
+              href="https://buymeacoffee.com/maheshpawar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              <Coffee className="h-4 w-4 text-amber-500" />
+              Buy me a coffee
             </a>
             <a
               href="https://x.com/MaheshPawaar"
@@ -275,6 +284,14 @@ export default function Home() {
               className="transition-colors hover:text-foreground"
             >
               @MaheshPawaar
+            </a>
+            <a
+              href="https://buymeacoffee.com/maheshpawar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              Buy me a coffee
             </a>
           </div>
         </div>
