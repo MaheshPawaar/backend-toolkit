@@ -23,7 +23,12 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    open-pull-requests-limit: 5
+    # Security-only. Zero disables routine version updates for this ecosystem;
+    # security updates are explicitly exempt from this limit and still open PRs.
+    # The point was never to chase every patch bump — it was to hear about the
+    # next React2Shell within hours rather than whenever someone next runs
+    # `npm audit` by hand. Raise this to 5 to get routine bumps back.
+    open-pull-requests-limit: 0
     commit-message:
       prefix: deps
       prefix-development: deps-dev
