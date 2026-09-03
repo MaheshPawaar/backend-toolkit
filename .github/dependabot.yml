@@ -1,0 +1,49 @@
+# Why this file exists: the only way to change what a visitor to backendkit
+# receives is to change what gets built and deployed. The served site is static,
+# so the dependency tree and the Actions that build it are the real attack
+# surface — not the origin, which answers 405 to everything but GET.
+#
+# The point is notification speed. React2Shell (CVE-2025-55182) went from
+# disclosure to mass exploitation in days; without this, a new advisory is only
+# noticed the next time someone runs `npm audit` by hand.
+version: 2
+updates:
+  # Actions are pinned to commit SHAs in .github/workflows/, which is what stops
+  # a repointed tag from running attacker code in a job. Dependabot reads the
+  # `# v4` comment after each SHA and bumps both together, so pinning does not
+  # mean going stale.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: deps
+      prefix-development: deps-dev
+    groups:
+      # One PR for the build toolchain rather than a dozen. Nothing here ships
+      # to a browser — with `output: "export"` these run at build time only —
+      # so they are reviewed together and merged on CI going green.
+      build-toolchain:
+        patterns: ["eslint*", "@eslint/*", "tailwindcss", "@tailwindcss/*", "postcss*", "sharp"]
+        update-types: [minor, patch]
+      # Everything else that is only a patch bump.
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: [patch]
+    ignore:
+      # Majors for next/react are a deliberate migration, not a weekly chore.
+      # Security advisories still come through regardless of this rule.
+      - dependency-name: next
+        update-types: [version-update:semver-major]
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]

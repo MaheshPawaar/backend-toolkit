@@ -1,0 +1,48 @@
+# https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Next's static export content-hashes everything under /_next/static, so those
+# assets can be cached indefinitely. The HTML above them must not be.
+/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
+
+# Security headers. None of these close a live vulnerability: the site is a
+# static export with no server, no forms posting anywhere and no auth, and the
+# origin answers 405 to every method but GET. They are defence in depth for the
+# browser, and they cost nothing to serve.
+#
+# Comments stay at the top level. A `#` line indented inside a rule block is not
+# reliably treated as a comment by the _headers parser, and one malformed line
+# there can drop the whole block — silently, with no build error.
+#
+# Strict-Transport-Security — only reach this origin over https, upgraded in the
+# browser before the request leaves the machine. Without it the first visit to
+# the bare domain is one plaintext round trip that a network attacker can
+# rewrite. Requires Cloudflare's "Always Use HTTPS" to be on: a browser that has
+# only ever seen http never receives this header at all.
+#
+# X-Frame-Options — stops the page being framed and passed off as someone
+# else's. This matters more here than on a brochure site: these tools take
+# pasted input, and a framed clone that looks like the real decoder is a
+# plausible way to harvest what someone pastes into it.
+#
+# Cross-Origin-Opener-Policy — severs window.opener so a cross-origin window
+# cannot retain a handle on this one.
+#
+# X-Content-Type-Options — honour the declared content-type rather than sniffing
+# it.
+#
+# Referrer-Policy — send only the origin to other sites, the full url to our
+# own. Tool state lives in the page rather than the query string, but this keeps
+# paths out of the Referer header on any outbound link regardless.
+#
+# No CSP, deliberately. Next injects inline bootstrap scripts into the exported
+# HTML, and static hosting has no per-request server to mint a nonce — so a
+# policy means hashing those by hand and re-hashing on every build. Add one if a
+# third-party script is ever introduced; today there are none, which is the
+# property that actually keeps pasted input on the machine it was typed on.
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
