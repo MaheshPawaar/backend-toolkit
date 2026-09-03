@@ -47,3 +47,10 @@ updates:
         update-types: [version-update:semver-major]
       - dependency-name: react-dom
         update-types: [version-update:semver-major]
+      # eslint 10 breaks against the eslint-config-next in use here:
+      # `TypeError: scopeManager.addGlobals is not a function` at lint time.
+      # Dependabot opened it as #21 and CI caught it. Ignoring the major stops it
+      # returning every week as 10.9.2, 10.9.3 ... Drop this rule when
+      # eslint-config-next supports eslint 10.
+      - dependency-name: eslint
+        update-types: [version-update:semver-major]
